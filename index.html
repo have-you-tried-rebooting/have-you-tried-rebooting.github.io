@@ -11,10 +11,20 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="Have you tried Rebooting?" startnode="1" creator="Twine" creator-version="2.3.5" ifid="61CDC477-C5AB-44C5-A330-42E764BC67AF" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story[tags~="office"] {
+<tw-storydata name="Have you tried Rebooting?" startnode="1" creator="Twine" creator-version="2.3.5" ifid="61CDC477-C5AB-44C5-A330-42E764BC67AF" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@font-face {
+  font-family: 'Dento';
+  src: url('images/Dento.ttf');
+}
+
+body, tw-story
+{
+  font-family: Dento;
+}
+
+tw-story[tags~="office"] {
   background-image:url("images/background.png");
   height: 500px; 
-  background-position-x: right;
+  background-position-y: bottom;
   background-repeat: no-repeat; 
 }
 
@@ -705,7 +715,7 @@ Aaarrrrggh! Aarrarargh! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 Shank bot then throws himself out the window.
 
 [[See you next time?-&gt;check patients]]
-(set: $shankBotDone to true)</tw-passagedata><tw-passagedata pid="103" name="start" tags="" position="1057,628" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="104" name="Office" tags="office" position="984,388" size="100,100">Another day in the office as a independent mechanical therapist for 
+(set: $shankBotDone to true)</tw-passagedata><tw-passagedata pid="103" name="start" tags="" position="1057,628" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="104" name="Office" tags="" position="984,388" size="100,100">Another day in the office as a independent mechanical therapist for 
 the silicon inclined.
 
 [[check your patient list-&gt;check patients]]</tw-passagedata></tw-storydata>
