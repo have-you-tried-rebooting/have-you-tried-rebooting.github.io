@@ -11,10 +11,10 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="Have you tried Rebooting?" startnode="1" creator="Twine" creator-version="2.3.5" ifid="61CDC477-C5AB-44C5-A330-42E764BC67AF" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story[tags~="start"] {
+<tw-storydata name="Have you tried Rebooting?" startnode="1" creator="Twine" creator-version="2.3.5" ifid="61CDC477-C5AB-44C5-A330-42E764BC67AF" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story[tags~="office"] {
   background-image:url("images/background.png");
-  height: 200px; 
-  background-position: top;
+  height: 500px; 
+  background-position-x: right;
   background-repeat: no-repeat; 
 }
 
@@ -104,18 +104,35 @@ tw-story[tags~="Trashbot_Upset"] {
   background-position-x: right;
   background-position-y: top; 
   background-repeat: no-repeat; 
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="starting passage" tags="Start start" position="842,449" size="100,100">(set: $shankBotSessionsPlayed to 0)
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="starting passage" tags="Start start" position="842,449" size="100,100">&lt;style&gt; .title-table { padding-left: 100px; } &lt;/style&gt;
+&lt;h2&gt; HAVE YOU TRIED REBOOTING? &lt;/h2&gt;
+&lt;table class=&quot;title-table&quot;&gt;
+
+&lt;tr&gt;
+&lt;td&gt; &lt;img src=&quot;images/Clergyservo_grandious.png&quot; width=&quot;200px&quot;  height=&quot;200px&quot; /img&gt;
+ &lt;/td&gt;
+&lt;td&gt;&lt;h3&gt; [[Start Game-&gt;Office]] &lt;/h3&gt; &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;
+&lt;img src=&quot;images/gwu_portland_logo.jpg&quot; style=&quot;float:right;width:70px;height:70px;&quot;/img&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;u&gt;  Cian Shelley | Ben Pincus | Roy Zhang&lt;/u&gt;
+&lt;b&gt;Global Game Jam 2020&lt;/b&gt; 
+&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+
+(set: $shankBotSessionsPlayed to 0)
 (set: $trashManSessionsPlayed to 0)
 (set: $goBotSessionsPlayed to 0)
 
 (set: $shankBotDone to false)
 (set: $trashManDone to false)
-(set: $goBotDone to false)
-
-Another day in the office as a independent mechanical therapist for 
-the silicon inclined.
-
-[[check your patient list-&gt;check patients]]</tw-passagedata><tw-passagedata pid="2" name="check patients" tags="patients" position="1103,525" size="100,100">Clients requesting your services:
+(set: $goBotDone to false)</tw-passagedata><tw-passagedata pid="2" name="check patients" tags="patients" position="1103,525" size="100,100">Clients requesting your services:
 
 (if: $trashManDone is false)[
   (if: $trashManSessionsPlayed is 0)[
@@ -587,7 +604,7 @@ If I was in control I would have won
 
 [[Do you think it could have been a bug?]]</tw-passagedata><tw-passagedata pid="86" name="There are bugs in every machines, engineers included" tags="honte_sad" position="1668,1892" size="100,100">There are no bugs in the game of Go
 
-[[Okay it appears we&#39;re out of time for today. I hope you come back soon-&gt;endGoBot0]]</tw-passagedata><tw-passagedata pid="87" name="Header" tags="" position="683.5,453.5" size="100,100">{
+[[Okay it appears we&#39;re out of time for today. I hope you come back soon-&gt;endGoBot0]]</tw-passagedata><tw-passagedata pid="87" name="Header" tags="" position="683,453" size="100,100">{
 (print: &quot;&lt;script&gt;$(&#39;html&#39;).removeClass(\)&lt;/script&gt;&quot;)
 (if: (passage:)&#39;s tags&#39;s length &gt; 0)[
 (print: &quot;&lt;script&gt;$(&#39;html&#39;).addClass(&#39;&quot; + (passage:)&#39;s tags.join(&#39; &#39;) + &quot;&#39;\)&lt;/script&gt;&quot;)
@@ -688,7 +705,10 @@ Aaarrrrggh! Aarrarargh! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 Shank bot then throws himself out the window.
 
 [[See you next time?-&gt;check patients]]
-(set: $shankBotDone to true)</tw-passagedata><tw-passagedata pid="103" name="start" tags="" position="1057,628" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
+(set: $shankBotDone to true)</tw-passagedata><tw-passagedata pid="103" name="start" tags="" position="1057,628" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="104" name="Office" tags="office" position="984,388" size="100,100">Another day in the office as a independent mechanical therapist for 
+the silicon inclined.
+
+[[check your patient list-&gt;check patients]]</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
