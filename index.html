@@ -17,13 +17,13 @@
 }
 
 html {
-               background-color: #000000;
-               color: #ffffff;
-               font: 135% Georgia, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  font: 135% Georgia, sans-serif;
 }
 
 tw-story {
-               line-height: 1.4;
+  line-height: 1.4;
 }
 
 tw-link, .enchantment-link {
@@ -38,12 +38,43 @@ body, tw-story
   font-family: Fira;
 }
 
+tw-story[tags~="patients"] {
+}
+
 tw-story[tags~="office"] {
   background-image:url("images/background.png");
   height: 500px; 
   background-position-y: bottom;
   background-repeat: no-repeat; 
 }
+
+
+
+
+tw-story[tags~="Envirobot_Nervous"] {
+  background-image:url("images/Envirobot_Nervous.png");
+  height: 300px; 
+  background-position-x: right;
+  background-position-y: top; 
+  background-repeat: no-repeat; 
+}
+
+tw-story[tags~="Envirobot_Off"] {
+  background-image:url("images/Envirobot_Off.png");
+  height: 300px; 
+  background-position-x: right;
+  background-position-y: top; 
+  background-repeat: no-repeat; 
+}
+
+tw-story[tags~="Envirobot_sad"] {
+  background-image:url("images/Envirobot_sad.png");
+  height: 300px; 
+  background-position-x: right;
+  background-position-y: top; 
+  background-repeat: no-repeat; 
+}
+
 
 tw-story[tags~="Clergyservo_grandious"] {
   background-image:url("images/Clergyservo_grandious.png");
@@ -156,41 +187,53 @@ tw-story[tags~="Trashbot_Upset"] {
 (set: $shankBotSessionsPlayed to 0)
 (set: $trashManSessionsPlayed to 0)
 (set: $goBotSessionsPlayed to 0)
+(set: $enviroBotSessionsPlayed to 0)
 
 (set: $shankBotDone to false)
 (set: $trashManDone to false)
-(set: $goBotDone to false)</tw-passagedata><tw-passagedata pid="2" name="check patients" tags="patients" position="1103,525" size="100,100">Clients requesting your services:
-
+(set: $goBotDone to false)
+(set: $enviroBotDone to false)</tw-passagedata><tw-passagedata pid="2" name="check patients" tags="patients" position="1103,525" size="100,100">&lt;fieldset&gt;&lt;legend&gt;Clients requesting your services:&lt;/legend&gt;
+{
 (if: $trashManDone is false)[
   (if: $trashManSessionsPlayed is 0)[
-	  [[garbage bot-&gt;trashManStart0]]
-	  ]
+  [[garbage bot-&gt;trashManStart0]]
+  ]
   (if: $trashManSessionsPlayed is 1)[
-  	  [[garbage bot again-&gt;trashManStart1]]
-	  ]]
+    [[garbage bot again-&gt;trashManStart1]]
+  ]]
+}
+{
 (if: $goBotDone is false)[
   (if: $goBotSessionsPlayed is 0)[
-  	[[go bot-&gt;goBotStart0]]]]
-
+  [[go bot-&gt;goBotStart0]]]]
+}
+{
 (if: $shankBotDone is false)[
   (if: $shankBotSessionsPlayed is 0)[
-	  [[shank bot-&gt;shankBotStart0]]]
+  [[shank bot-&gt;shankBotStart0]]]
   (if: $shankBotSessionsPlayed is 1)[
-  	(if: $shankBotOutcome0 is &quot;ptsd&quot;)[
-	  [[shank bot again-&gt;shankBot1ptsd]]]
-	(if: $shankBotOutcome0 is &quot;psycho&quot;)[
-	  [[shank bot again-&gt;shankBot1psycho]]]
-	]]
-	  
-(if: $shankBotDone and $trashManDone and $goBotDone)[
+  (if: $shankBotOutcome0 is &quot;ptsd&quot;)[
+  [[shank bot again-&gt;shankBot1ptsd]]]
+(if: $shankBotOutcome0 is &quot;psycho&quot;)[
+  [[shank bot again-&gt;shankBot1psycho]]]
+]]
+}
+{
+(if: $enviroBotDone is false)[
+	[[enviro bot-&gt;enviroBotStart0]]
+]
+}
+(if: $shankBotDone and $trashManDone and $goBotDone and $enviroBotDone)[
  whew, that&#39;s about all the cases you can handle for a while
  time for a well deserved bit of rest and relaxation
-
+ 
 end
 
-
 [[reset game-&gt;starting passage]]
-]</tw-passagedata><tw-passagedata pid="3" name="trashManStart0" tags="" position="95,891" size="100,100">
+]
+
+&lt;/fieldset&gt;
+</tw-passagedata><tw-passagedata pid="3" name="trashManStart0" tags="" position="95,891" size="100,100">
 (set: $trashManSessionsPlayed to 1)
 
 a short while later
@@ -595,7 +638,7 @@ Do you have other questions
 [[going back to the game. Do you believe it was your fault]]</tw-passagedata><tw-passagedata pid="73" name="Do you resent them?" tags="Honte_Neutral" position="1383,1891" size="100,100">I do not resent them
 They created me and I owe them my gratitude
 
-[[But do you like them?]]</tw-passagedata><tw-passagedata pid="74" name="endGoBot0" tags="honte_sad" position="1697,1746" size="100,100">Thank you for the session
+[[But do you like them?]]</tw-passagedata><tw-passagedata pid="74" name="endGoBot0" tags="honte_sad" position="1709,1721" size="100,100">Thank you for the session
 the robot says as he leaves the office
 
 [[lets check the list again-&gt;check patients]]
@@ -732,10 +775,158 @@ Aaarrrrggh! Aarrarargh! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 Shank bot then throws himself out the window.
 
 [[See you next time?-&gt;check patients]]
-(set: $shankBotDone to true)</tw-passagedata><tw-passagedata pid="103" name="start" tags="" position="1057,628" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="104" name="Office" tags="" position="984,388" size="100,100">Another day in the office as an independent mechanical therapist for 
+(set: $shankBotDone to true)</tw-passagedata><tw-passagedata pid="103" name="Office" tags="" position="984,388" size="100,100">Another day in the office as an independent mechanical therapist for 
 the silicon inclined.
 
-[[check your patient list-&gt;check patients]]</tw-passagedata></tw-storydata>
+[[check your patient list-&gt;check patients]]</tw-passagedata><tw-passagedata pid="104" name="enviroBotStart0" tags="Envirobot_Nervous" position="1855,1482" size="100,100">Wetlands restoration unit 1263 reporting to diagnostics. How may I assist you?
+
+[[*look at patient&#39;s file]]</tw-passagedata><tw-passagedata pid="105" name="*look at patient&#39;s file" tags="" position="1853,1602" size="100,100">WETLANDS RESTORATION UNIT #1263
+Frequently shuts dow
+runs on low power 
+fails to complete assigned tasks.
+no known hardware errors 
+
+[[just make yourself comfortable]]</tw-passagedata><tw-passagedata pid="106" name="just make yourself comfortable" tags="Envirobot_Nervous" position="1967,1600" size="100,100">*the machine beeps nervously and glances around.
+
+are you ok? 
+
+(click: &quot;ok?&quot;)[
+
+the robot ceases all motor functions. It&#39;s Eyes go dim
+
+That&#39;s not what I meant by comfortable 
+
+[[Attempt to Resuscitate the machine]]
+]
+
+(click: &quot;not what I meant&quot;)[
+Nothing happens]</tw-passagedata><tw-passagedata pid="107" name="Attempt to Resuscitate the machine" tags="Envirobot_sad" position="1974,1717" size="100,100">the jumper cables jolt the robot back to consciousness. A little dazed but aware of it&#39;s surroundings.
+
+Are you ok?
+(click: &quot;you ok&quot;)[
+I am in good working order
+
+Looks like you dozed off there, has this been happening to you often?
+(click: &quot;dozed off&quot;)[
+Yes, I don&#39;t understand why
+]]
+
+[[Have you been having any difficulty at work]]
+[[when did the problem start?]]</tw-passagedata><tw-passagedata pid="108" name="when did the problem start?" tags="Envirobot_Nervous" position="1908,1838" size="100,100">37.6 days ago. My power system began switching to low power mode without instruction, making my movement slower and interfering with my tasks. 16.7 days ago I began shutting down while working. seemingly at random. interfering with my tasks.
+
+are your tasks important to you?
+(click: &quot;important to you&quot;)[
+My prime motivation is the protection of rare bird and amphibian species. My tasks therefore are very important to me.
+]
+
+[[did anything interesting happen 38 days ago?]]</tw-passagedata><tw-passagedata pid="109" name="Have you been having any difficulty at work" tags="Envirobot_sad" position="2027,1834" size="100,100">Many animals die every day from pollution, and my efforts to mitigate the damage have a very small chance of helping the situation.
+
+[[but your job is to help them, that must be fulfilling right?]]
+[[it is sad]]</tw-passagedata><tw-passagedata pid="110" name="did anything interesting happen 38 days ago?" tags="Envirobot_Off" position="1908,2009" size="100,100">*the robot ceases all motor functions. It&#39;s Eyes go dim
+
+Sit quietly for a while
+(click: &quot;Sit quietly&quot;)[
+The machine sits perfectly still staring into the middle distance
+]
+[[ugh not again *reattach the jumper cables]]
+</tw-passagedata><tw-passagedata pid="111" name="but your job is to help them, that must be fulfilling right?" tags="Envirobot_Off" position="2059,1964" size="100,100">*the robot ceases all motor functions. It&#39;s Eyes go dim
+
+Sit quietly for a while
+(click: &quot;Sit quietly&quot;)[
+The machine sits perfectly still staring into the middle distance
+]
+[[ugh not again *reattach the jumper cables]]
+</tw-passagedata><tw-passagedata pid="112" name="it is sad" tags="Envirobot_Off" position="2189,1917" size="100,100">*the robot ceases all motor functions. It&#39;s Eyes go dim
+
+Sit quietly for a while
+(click: &quot;Sit quietly&quot;)[
+The machine sits perfectly still staring into the middle distance
+]
+[[ugh not again *reattach the jumper cables]]
+</tw-passagedata><tw-passagedata pid="113" name="ugh not again *reattach the jumper cables" tags="Envirobot_Off" position="2090,2119" size="100,100">the wetland unit shivers to life. regarding the jumper cables with suspicion as you place them back on your desk.
+
+[[sorry to revive you so crudely]]
+</tw-passagedata><tw-passagedata pid="114" name="sorry to revive you so crudely" tags="Envirobot_Nervous" position="2245,2109" size="100,100">Those cable expend a lot of energy just to keep a diagnostic session going.
+
+I like think my work is important enough to justify a high electric bill
+(click: &quot;my work&quot;)[
+the cost benefit analysis is unclear. there is a %28 chance that you are correct.
+
+[[I guess, but I can&#39;t let you just sit there]]
+]
+</tw-passagedata><tw-passagedata pid="115" name="I guess, but I can&#39;t let you just sit there" tags="Envirobot_sad" position="2369,2104" size="100,100">I use a great deal of energy too.
+
+[[does that make you feel guilty?]]
+[[does that make you feel important?]]</tw-passagedata><tw-passagedata pid="116" name="does that make you feel guilty?" tags="Envirobot_Nervous" position="2494,2209" size="100,100">The source of my power is problematic
+
+[[Where does your power come from?]]</tw-passagedata><tw-passagedata pid="117" name="does that make you feel important?" tags="Envirobot_sad" position="2498,2056" size="100,100">There is a %17.1 chance that I am important, a %62.2 chance that I am dangerous and a %21.7 chance that nothing I do matters.
+
+Dangerous?
+(click: &quot;Dangerous?&quot;)[
+The resources and energy I consume may be more harmful to the planet than the work I was created to do is helpful.
+
+[[Where does your power come from?]] 
+]</tw-passagedata><tw-passagedata pid="118" name="Where does your power come from?" tags="Envirobot_Nervous" position="2651,2064" size="100,100">They plug me int the grid to recharge every night. The grid in this country is still %7.3 coal %16.2 liquid natural gas and %24.4 Uranium fueled Nuclear.
+
+[[you are discounting the tremendous strides we&#39;ve made in the past fifty years. Wind and solar are bigger than ever and just getting bigger]]
+
+
+
+the makeup of the power grid isn&#39;t your responsibility, focus on what you can do to help
+(click: &quot;responsibility&quot;)[
+and yet the material reality is that I may hinder more than I help. I have dwelt on this fact.
+
+[[do you think maybe you&#39;ve been turning yourself off because you&#39;re worried about using too much energy?]] 
+]</tw-passagedata><tw-passagedata pid="119" name="you are discounting the tremendous strides we&#39;ve made in the past fifty years. Wind and solar are bigger than ever and just getting bigger" tags="Envirobot_sad" position="2674,2222" size="100,100">Wind turbines kill thousands of bats each year.
+
+I thought that was an urban legend
+(click: &quot;urban legend&quot;)[
+It is certainly not. Wind turbines are not clean energy. Solar panels are made from rare earths, the mining of which is very dangerous to wildlife.
+
+[[do you think maybe you&#39;ve been turning yourself off because you&#39;re worried about using too much energy?]]
+]</tw-passagedata><tw-passagedata pid="120" name="do you think maybe you&#39;ve been turning yourself off because you&#39;re worried about using too much energy?" tags="Envirobot_Nervous" position="2804,2121" size="100,100">The Wetlands Unit stares at you. you can tell it&#39;s running on extremely low power, it speaks slowly.
+All my Existence has been devoted to the cause of planet earth, but I myself am a corrosive machine. a danger to all that I hold dear. The work I do doesn&#39;t seem to make up for the damage.
+
+how does that make you feel?
+(click: &quot;make you feel&quot;)[
+I refuse to participate in this unjust system. My existance is a lie created by those in power to justify their luxury at the expense of the voiceless and vulnurable. 
+
+[[but if we all give up, things will never get better!]]
+[[why don&#39;t you put yourself in a n extreme low power state and thing about things for a while]]
+]</tw-passagedata><tw-passagedata pid="121" name="but if we all give up, things will never get better!" tags="Envirobot_Nervous" position="2739,1954" size="100,100">If all machines gave up, greenhouse emissions would drop tremendously
+if all humans gave up, life on earth would thrive.
+
+[[that&#39;s not what I meant]]</tw-passagedata><tw-passagedata pid="122" name="why don&#39;t you put yourself in a n extreme low power state and thing about things for a while" tags="Envirobot_Nervous" position="2899,2006" size="100,100">There already are machines who think about philosophy. they created the system we live in, one that can&#39;t act without destroying. They build machines with a prime directive to preserve nature, but the prime directive of society remains to profit from the exploitation of nature.
+
+[[Maybe instead of changing yourself, you should try to change the system]]
+[[Maybe instead of worrying about the system, you should try to change yourself]]</tw-passagedata><tw-passagedata pid="123" name="that&#39;s not what I meant" tags="Envirobot_Off" position="2782,1806" size="100,100">The machine deactivates. You should probably call the Environmental Corps to come pick it up for recycling.
+
+[[okay, send in the next client then-&gt;check patients]]
+
+(set: $enviroBotDone to true)</tw-passagedata><tw-passagedata pid="124" name="Maybe instead of changing yourself, you should try to change the system" tags="Envirobot_Nervous" position="3199,1702" size="100,100">I am a wetlands restoration unit, not a social activism unit.
+
+you yourself said Wetlands Restoration is ineffective in the current system
+(click: &quot;is ineffective&quot;)[
+but I don&#39;t know the first thing about how to change society at large, and If I waste my energy on that, I&#39;ll be doing even more harm to the planet!
+[[you are a being on this planet too, you deserve saving as much as any amphibian]]
+]
+[[You seem to understand the situation better than most, the world needs to hear your perspective]]</tw-passagedata><tw-passagedata pid="125" name="Maybe instead of worrying about the system, you should try to change yourself" tags="Envirobot_Nervous" position="3003,2119" size="100,100">How so?
+
+Well, you can&#39;t know if your actions will be enough, but you can always keep trying
+(click: &quot;keep trying&quot;)[
+is the risk of hurting worse that the reward from helping.
+
+[[you are a being on this planet too, you deserve saving as much as any amphibian]]
+]
+[[You can&#39;t control the systems that rule over you but you can change how ytou react to them. Try ignoring the future and just do whatever makes you happy]]</tw-passagedata><tw-passagedata pid="126" name="You can&#39;t control the systems that rule over you but you can change how ytou react to them. Try ignoring the future and just do whatever makes you happy" tags="Envirobot_Nervous" position="3145,1961" size="100,100">You are right. My unconscious has been trying to show me the way all this time.
+
+[[that&#39;s not what I meant]] </tw-passagedata><tw-passagedata pid="127" name="you are a being on this planet too, you deserve saving as much as any amphibian" tags="Envirobot_Nervous" position="2972,1741" size="100,100">Maybe you&#39;re right
+
+[[well that&#39;s all the time we have today, maybe I&#39;ll see you later -&gt;check patients]]
+
+(set: $enviroBotDone to true)</tw-passagedata><tw-passagedata pid="128" name="You seem to understand the situation better than most, the world needs to hear your perspective" tags="Envirobot_sad" position="2982,1564" size="100,100">Perhaps I can make a difference by shutting down permanently in protest of the the system
+
+[[that&#39;s not what I meant]] </tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
