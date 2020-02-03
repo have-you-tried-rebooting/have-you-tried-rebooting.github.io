@@ -17,8 +17,8 @@
 }
 
 html {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #3D0FAA;
+  color: #3D0FAA;
   font: 135% Georgia, sans-serif;
 }
 
@@ -179,10 +179,15 @@ tw-story[tags~="Trashbot_Upset"] {
 &lt;td&gt;
 &lt;u&gt;  Cian Shelley | Ben Pincus | Roy Zhang&lt;/u&gt;
 &lt;b&gt;Global Game Jam 2020&lt;/b&gt; 
+music by: Jackson Muenster
 &lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;/table&gt;
+
+&lt;audio src=&quot;images/onTheCouch.mp3&quot; type=&quot;audio/mpeg&quot; autoplay&gt;
+Your browser does not support the &lt;code&gt;audio&lt;/code&gt; element.
+&lt;/audio&gt; 
 
 (set: $shankBotSessionsPlayed to 0)
 (set: $trashManSessionsPlayed to 0)
@@ -677,7 +682,8 @@ If I was in control I would have won
 [[Okay it appears we&#39;re out of time for today. I hope you come back soon-&gt;endGoBot0]]</tw-passagedata><tw-passagedata pid="87" name="Header" tags="" position="683,453" size="100,100">{
 (print: &quot;&lt;script&gt;$(&#39;html&#39;).removeClass(\)&lt;/script&gt;&quot;)
 (if: (passage:)&#39;s tags&#39;s length &gt; 0)[
-(print: &quot;&lt;script&gt;$(&#39;html&#39;).addClass(&#39;&quot; + (passage:)&#39;s tags.join(&#39; &#39;) + &quot;&#39;\)&lt;/script&gt;&quot;)
+(print: &quot;&lt;script&gt;$(&#39;html&#39;).addClass(&#39;&quot; + (passage:)&#39;s tags.join(&#39; &#39;) + &quot;&#39;\);var audio_background = new Audio(&#39;/images/onTheCouch.mp3&#39;);audio_background.play();
+&lt;/script&gt;&quot;)
 ]
 }</tw-passagedata><tw-passagedata pid="88" name="ptsd why" tags="shankbot_sad" position="1326,195" size="100,100">After our last session
 I began reevaluating my actions in slow mo replay 
